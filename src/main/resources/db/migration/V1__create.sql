@@ -25,6 +25,7 @@ DO $$
                 INSERT INTO device (id, name) VALUES (freeId, (SELECT FORMAT(templateName, freeId)));
                 freeId = freeId + 1;
             END LOOP;
-        create sequence device_id_seq start with 200; -- devices count
+        create sequence if not exists device_id_seq;
+        alter sequence if exists device_id_seq restart with 200; -- devices count
 
     END $$;
