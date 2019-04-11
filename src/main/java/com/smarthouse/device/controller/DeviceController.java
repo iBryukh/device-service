@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import static com.smarthouse.commonutil.data_transfer_objects.DTOUtil.getDeviceFromDto;
 import static com.smarthouse.commonutil.exceptions.ResourceNotFoundException.getNoResourceMessage;
@@ -31,11 +33,16 @@ public class DeviceController {
                 ));
     }
 
-    @PostMapping(name = "/device")
+    @PostMapping("/device")
     public ResponseEntity<Device> register(@RequestBody DeviceDTO deviceDTO) {
         Objects.requireNonNull(deviceDTO);
         Device device = getDeviceFromDto(deviceDTO);
         return ResponseEntity.ok(deviceService.save(device));
+    }
+
+    @GetMapping("/devices")
+    public ResponseEntity<Set<Device>> getDeviceById(@RequestBody List<Long> ids) {
+        return ResponseEntity.ok(deviceService.getDevicesByIds(ids));
     }
 
 }

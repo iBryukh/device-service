@@ -18,13 +18,13 @@ DO $$
     DECLARE
         freeId       BIGINT       := 0;
         templateName VARCHAR(255) := 'device%s';
-        devicesCount INT          := 20;
+        devicesCount INT          := 200;
     BEGIN
         WHILE freeId < devicesCount
             LOOP
                 INSERT INTO device (id, name) VALUES (freeId, (SELECT FORMAT(templateName, freeId)));
                 freeId = freeId + 1;
             END LOOP;
-        alter sequence device_id_seq restart with 20; -- customers count
+        create sequence device_id_seq start with 200; -- devices count
 
     END $$;
