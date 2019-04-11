@@ -1,5 +1,5 @@
 server:
-    port: 8003
+  port: 8003
 
 spring:
   datasource:
@@ -25,7 +25,13 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 flyway:
-    enabled: true
-    url: jdbc:postgresql://localhost:5432/device_service
-    user: postgres
-    password: root
+  enabled: true
+  url: jdbc:postgresql://localhost:5432/device_service
+  user: postgres
+  password: root
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8004/auth/user
+signing:
+  key: "345345fsdfsf5345"
