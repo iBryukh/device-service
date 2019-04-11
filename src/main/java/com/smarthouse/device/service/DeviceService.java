@@ -22,7 +22,7 @@ public class DeviceService extends CRUDServiceImpl<Device, Long> {
         this.repository = repository;
     }
 
-    public Set<Device> getDevicesByIds(List<Long> ids) {
+    public Set<Device> getDevicesByIds(Set<Long> ids) {
         return ids.stream()
                 .map(id -> repository.findOne(id))
                 .filter(Objects::nonNull)

@@ -41,7 +41,7 @@ public class DeviceController {
     }
 
     @GetMapping("/devices")
-    public ResponseEntity<Set<Device>> getDeviceById(@RequestBody List<Long> ids) {
+    public ResponseEntity<Set<Device>> getDeviceById(@RequestBody Set<Long> ids) {
         return ResponseEntity.ok(deviceService.getDevicesByIds(ids));
     }
 
