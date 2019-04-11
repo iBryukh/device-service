@@ -16,8 +16,8 @@ spring:
           lob:
             non_contextual_creation: true
     open-in-view: false
-  flyway:
-      enabled: true
-      url: jdbc:postgresql://localhost:5432/device_service
-      user: postgres
-      password: root
+flyway:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/device_service
+    user: postgres
+    password: root
